@@ -31,8 +31,7 @@ def period_initializer(curr_day, name):
 
 def individual_initializer(name):
     cols = ['normal', 'sns', 'total'] 
-
-    df = pd.DataFrame(columns = cols) 
+    df = pd.DataFrame([[0, 0, 0]], columns=cols)
     csv_name = name + '_i.csv'
     df.to_csv(csv_name, index = False)
 
@@ -42,6 +41,9 @@ def update_calc(df, name):
         df.to_csv(name + '.csv', index = True)
     else:
         df['total'] = df['normal'] + df['sns']
+        df.loc[0]['normal'] = df['normal'].sum()
+        df.loc[0]['sns'] = df['sns'].sum()
+        df.loc[0]['total'] = df['total'].sum()
         df.to_csv(name + '.csv', index = False)
 
 employees_full = ['Lang', 'Dennis', 'Linda', 'Tamy', 'Mindy', 'Amy', 'May', 'Ruby', 'Lucy', 'Holly', 'Kelly', 'Thanh']
@@ -49,7 +51,7 @@ employees = ['Lang', 'Dennis', 'Linda']
 
 def handle_input():
     name_input = 'Lang'
-    sns_input = 'SNS'
+    sns_input = 'Normal'
     price_input = 35
 
     name_input_i = name_input + '_i'
@@ -71,13 +73,13 @@ def handle_input():
 
     update_calc(df, name_input)
     update_calc(df2, name_input_i)
+    print(df2.loc[0])
 
 def biweekly_update():
     for employee in employees:
         period_initializer(curr_day, employee)
         individual_initializer(employee)
 
-# biweekly_update()
 if not (os.path.exists('Lang.csv')):
     biweekly_update()
 else:
