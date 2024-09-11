@@ -52,8 +52,8 @@ employees_full = ['Lang', 'Dennis', 'Linda', 'Tamy', 'Mindy', 'Amy', 'May', 'Rub
 # employees = ['Lang', 'Dennis', 'Linda']
 
 def handle_input():
-    name_input = 'Lang'
-    sns_input = 'SNS'
+    name_input = 'Amy'
+    sns_input = 'Normal'
     price_input = 45
 
     # name_input = input('Name?\n')
