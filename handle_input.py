@@ -23,13 +23,13 @@ def update_calc(df, name, biweekly):
         df.to_csv(filepath2, index = False)
 
 def employee_input():
-    name_input = 'Lang'
-    sns_input = 'Normal'
-    price_input = 35
+    # name_input = 'Lang'
+    # sns_input = 'Normal'
+    # price_input = 35
 
-    # name_input = input('Name?\n')
-    # sns_input = input('Normal or SNS?\n')
-    # price_input = int(input('Price?\n'))
+    name_input = input('Name?\n')
+    sns_input = input('Normal or SNS?\n')
+    price_input = int(input('Price?\n'))
     
     name_input_today = name_input + '_today'
 
