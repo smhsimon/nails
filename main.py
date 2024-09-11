@@ -41,19 +41,25 @@ def update_calc(df, name):
         df.to_csv(name + '.csv', index = True)
     else:
         df['total'] = df['normal'] + df['sns']
-        df.loc[0]['normal'] = df['normal'].sum()
-        df.loc[0]['sns'] = df['sns'].sum()
-        df.loc[0]['total'] = df['total'].sum()
+        df_sumless = df.drop(0)
+        df.loc[0]['normal'] = df_sumless['normal'].sum()
+        df.loc[0]['sns'] = df_sumless['sns'].sum()
+        df.loc[0]['total'] = df_sumless['total'].sum()
         df.to_csv(name + '.csv', index = False)
 
+employees = ['Lang', 'Dennis', 'Linda', 'Tamy', 'Mindy', 'Amy', 'May', 'Ruby', 'Lucy', 'Holly', 'Kelly', 'Thanh']
 employees_full = ['Lang', 'Dennis', 'Linda', 'Tamy', 'Mindy', 'Amy', 'May', 'Ruby', 'Lucy', 'Holly', 'Kelly', 'Thanh']
-employees = ['Lang', 'Dennis', 'Linda']
+# employees = ['Lang', 'Dennis', 'Linda']
 
 def handle_input():
     name_input = 'Lang'
-    sns_input = 'Normal'
-    price_input = 35
+    sns_input = 'SNS'
+    price_input = 45
 
+    # name_input = input('Name?\n')
+    # sns_input = input('Normal or SNS?\n')
+    # price_input = int(input('Price?\n'))
+    
     name_input_i = name_input + '_i'
     
     df = pd.read_csv(name_input + '.csv', index_col=0)
@@ -80,6 +86,7 @@ def biweekly_update():
         period_initializer(curr_day, employee)
         individual_initializer(employee)
 
+# biweekly_update()
 if not (os.path.exists('Lang.csv')):
     biweekly_update()
 else:
