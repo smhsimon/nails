@@ -1,0 +1,15 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+	<head> 
+		<title>Tables</title>			 
+	</head> 
+	<body> 
+		<div align="left"> 
+			<h1>Tables</h1>
+			{% for table, title in tables %}
+				<h2>{{ title }}</h2>							 
+				{{ table|safe }} 
+			{% endfor %}
+		</div>
+	</body> 
+</html>

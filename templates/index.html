@@ -6,9 +6,11 @@
 </head>
 <body>
     <h2>Hello!</h2>
+    <h3>Today's date is {{date}}.</h3>
     <form>
         <label for="employees">Name</label><br>
         <select id="employees" name="employee"><br>
+            <option disabled selected value> -- select an option -- </option>
             {% for employee in employees %}
                 <option value="{{ employee }}">{{ employee }}</option>
             {% endfor %}
@@ -16,13 +18,21 @@
 
         <label for="normal_or_SNS">Normal or SNS</label><br>
         <select id="normal_or_SNS" name="normal_or_SNS"><br>
+            <option disabled selected value>-- select an option --</option>
             <option value="normal">Normal</option>
             <option value="SNS">SNS</option>
         </select><br><br>
 
         <label for="price">Price</label><br>
-        <input type="text" id="price" name="price" value=""><br><br>
+        <input type="number" id="price" name="price" placeholder="-- enter price --"><br><br>
         <input type="submit" value="Submit"> 
+
+        <p>
+            <a href="second">page 2</a>
+        </p>
+        <p>
+            <a href="table">table</a>
+        </p>
     </form> 
 </body>
 </html>

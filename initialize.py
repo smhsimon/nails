@@ -25,7 +25,7 @@ def period_initializer(name):
     csv_name = name + '_biweekly.csv'
     subdirectory = os.path.join(directory, name)
     filepath = os.path.join(subdirectory, csv_name)
-    df.to_csv(filepath, index=True)
+    df.to_csv(filepath, index=True, index_label='date')
 
 def individual_initializer(name):
     cols = ['normal', 'sns', 'total'] 
