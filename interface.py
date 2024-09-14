@@ -1,12 +1,19 @@
-from flask import Flask, render_template
+from flask import Flask, request, redirect, flash, render_template
 import pandas as pd
 
 import settings
 
 app = Flask(__name__)
+app.secret_key = 'a;lsdkfj;alsjh_'
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def employee_input():
+    if request.method == 'POST':
+        name = request.form.get('employee')
+        normal_or_SNS = request.form.get('normal_or_SNS')
+        price = request.form.get('price')
+        flash('Thanks, ' + name + '!')
+        redirect(request.url)
     return render_template('index.html', employees=settings.employees, date=settings.curr_full_date)
 
 @app.route('/biweekly')

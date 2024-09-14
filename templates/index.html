@@ -2,14 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Input</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<title>Input</title>
 </head>
 <body>
+<div>
     <h2>Hello!</h2>
     <h3>Today's date is {{date}}.</h3>
-    <form>
+    <form method="post">
         <label for="employees">Name</label><br>
-        <select id="employees" name="employee"><br>
+        <select id="employees" name="employee" required>
             <option disabled selected value> -- select an option -- </option>
             {% for employee in employees %}
                 <option value="{{ employee }}">{{ employee }}</option>
@@ -17,15 +19,23 @@
         </select><br><br>
 
         <label for="normal_or_SNS">Normal or SNS</label><br>
-        <select id="normal_or_SNS" name="normal_or_SNS"><br>
+        <select id="normal_or_SNS" name="normal_or_SNS" required>
             <option disabled selected value>-- select an option --</option>
             <option value="normal">Normal</option>
             <option value="SNS">SNS</option>
         </select><br><br>
 
         <label for="price">Price</label><br>
-        <input type="number" id="price" name="price" placeholder="-- enter price --"><br><br>
-        <input type="submit" value="Submit"> 
+        <input type="number" id="price" name="price" placeholder="-- enter price --" required><br><br>
+
+        <div id="submission">
+            <input type="submit" value="Submit"> 
+            <div id="flash">
+                {% for message in get_flashed_messages() %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        </div>
     </form> 
     <p>
         <a href="today">today</a>
@@ -34,5 +44,11 @@
     <p>
         <a href="biweekly">biweekly</a>
     </p>
+    <script>
+        setTimeout(function(){
+            document.getElementById('flash').className = 'fade';
+        }, 2500);
+    </script>
+</div>
 </body>
 </html>

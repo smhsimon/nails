@@ -2,9 +2,23 @@
     display: flex;
     justify-content: center;  
     flex-wrap: wrap;
-    gap: 50px;
+    gap: 25px;
 }
 
 .today_container {
-    width: 16%;
+    width: 14%;
+}
+
+#submission {
+    display: flex;
+    align-items: center; 
+    gap: 5px;
+}
+
+#flash {
+    opacity:1;
+    transition:opacity 500ms;
+}
+#flash.fade {
+    opacity:0;
 }
