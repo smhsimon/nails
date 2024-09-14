@@ -1,0 +1,19 @@
+<!DOCTYPE html> 
+<html lang="en">
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+ 
+	<head> 
+		<title>Today's Totals</title>			 
+	</head> 
+	<body> 
+		<h2>Today</h2>
+		<div class="container"> 
+			{% for table, title in tables %}
+				<div class="today_container">
+					<h3>{{ title }}</h3>							 
+					{{ table|safe }}
+				</div> 
+			{% endfor %}
+		</div>
+	</body> 
+</html>

@@ -9,21 +9,26 @@ app = Flask(__name__)
 def employee_input():
     return render_template('index.html', employees=settings.employees, date=settings.curr_full_date)
 
-@app.route('/second')
-def second_page():
-    return render_template('second.html')
+@app.route('/biweekly')
+def biweekly():
+    tables = []
 
-@app.route('/table') 
-def table(): 
-    data = pd.read_csv('employee data\Lang\Lang_today.csv')
-    data2 = pd.read_csv('employee data\Lang\Lang_biweekly.csv') 
+    for employee in settings.employees:
+        data = pd.read_csv('employee data\\' + employee + '\\' + employee + '_biweekly.csv')
+        tables.append((data.to_html(classes='data', index=False), employee))
 
-    tables = [
-        (data.to_html(classes='data', index=False), 'Lang Today'),
-        (data2.to_html(classes='data', index=False), 'Lang Biweekly')
-    ]
+    return render_template('biweekly.html', tables=tables)
 
-    return render_template('table.html', tables=tables)
+
+@app.route('/today') 
+def today(): 
+    tables = []
+
+    for employee in settings.employees:
+        data = pd.read_csv('employee data\\' + employee + '\\' + employee + '_today.csv')
+        tables.append((data.to_html(classes='data', index=False), employee))
+
+    return render_template('today.html', tables=tables)
 
 
 if __name__ == '__main__':

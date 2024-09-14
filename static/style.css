@@ -1,0 +1,10 @@
+.container {
+    display: flex;
+    justify-content: center;  
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+.today_container {
+    width: 16%;
+}
