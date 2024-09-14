@@ -2,6 +2,7 @@ from flask import Flask, request, redirect, flash, render_template
 import pandas as pd
 
 import settings
+import handle_input
 
 app = Flask(__name__)
 app.secret_key = 'a;lsdkfj;alsjh_'
@@ -12,8 +13,9 @@ def employee_input():
         name = request.form.get('employee')
         normal_or_SNS = request.form.get('normal_or_SNS')
         price = request.form.get('price')
+        handle_input.employee_input(name, normal_or_SNS, int(price))
+        
         flash('Thanks, ' + name + '!')
-        redirect(request.url)
     return render_template('index.html', employees=settings.employees, date=settings.curr_full_date)
 
 @app.route('/biweekly')

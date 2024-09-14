@@ -12,7 +12,7 @@ def update_calc(df, name, biweekly):
         filepath = os.path.join(subdirectory, csv_name)
         df['total'] = df['normal'] + df['sns']
         df.to_csv(filepath, index = True)
-    elif not biweekly:
+    if not biweekly:
         csv_name2 = name + '_today.csv'
         filepath2 = os.path.join(subdirectory, csv_name2)
         df['total'] = df['normal'] + df['sns']
@@ -20,17 +20,10 @@ def update_calc(df, name, biweekly):
         df.loc[0]['normal'] = df_sumless['normal'].sum()
         df.loc[0]['sns'] = df_sumless['sns'].sum()
         df.loc[0]['total'] = df_sumless['total'].sum()
+        df['total'] = df['normal'] + df['sns']
         df.to_csv(filepath2, index = False)
 
-def employee_input():
-    name_input = 'Lang'
-    sns_input = 'SNS'
-    price_input = 45
-
-    # name_input = input('Name?\n')
-    # sns_input = input('Normal or SNS?\n')
-    # price_input = int(input('Price?\n'))
-    
+def employee_input(name_input, sns_input, price_input):    
     name_input_today = name_input + '_today'
 
     csv_name = name_input + '_biweekly.csv'
