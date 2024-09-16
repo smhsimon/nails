@@ -16,10 +16,11 @@ def update_calc(df, name, biweekly):
         csv_name2 = name + '_today.csv'
         filepath2 = os.path.join(subdirectory, csv_name2)
         df['total'] = df['normal'] + df['sns']
-        df_sumless = df.drop(0)
-        df.loc[0]['normal'] = df_sumless['normal'].sum()
-        df.loc[0]['sns'] = df_sumless['sns'].sum()
-        df.loc[0]['total'] = df_sumless['total'].sum()
+        df_sumless = df.drop(0
+        )
+        df.loc[0, 'normal'] = df_sumless['normal'].sum()
+        df.loc[0, 'sns'] = df_sumless['sns'].sum()
+        df.loc[0, 'total'] = df_sumless['total'].sum()
         df['total'] = df['normal'] + df['sns']
         df.to_csv(filepath2, index = False)
 

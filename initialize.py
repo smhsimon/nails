@@ -1,12 +1,13 @@
 import pandas as pd
 import os
+import calendar
 
 import settings
 
 directory = 'employee data'
 
 def period_initializer(name):
-    if settings.curr_day < 14:
+    if settings.curr_day <= 14:
         start_day = '01'
         end_day = '14'
     else:
