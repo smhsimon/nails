@@ -3,12 +3,12 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<title>Input</title>
+<title>Deletion</title>
 </head>
 <body>
 <div>
     <h2>Hello!</h2>
-    <h3>Today's date is {{date}}.</h3>
+    <h3>Fill out the form to delete a batch of data.</h3>
     <form method="post">
         <label for="employees">Name</label>
         <select id="employees" name="employee" required>
@@ -18,33 +18,9 @@
             {% endfor %}
         </select>
 
-        <div id = "input_boxes">
-            <div>
-                <label for="normal">Normal</label>
-                <textarea rows = "6" cols = "22" id="normal" name="normal" placeholder=" -- list transactions -- " value=""></textarea>
-            </div>
-            <div>
-                <label for="sns">SNS</label>
-                <textarea rows = "6" cols = "22" id="sns" name="sns" placeholder=" -- list transactions -- " value=""></textarea>
-            </div>
-            
-            <div>
-                <p>
-                    <small>
-                        Please list each transaction for each category. <br>
-                    </small>
-                </p>
-                <p>
-                    <small>
-                        Make sure to separate each value using commas! <br>
-                    </small>
-                </p>
-                <p>
-                    <small>
-                        (ex. 35, 35, 45, 45)
-                    </small>
-                </p>
-            </div>
+        <label for="batch">Batch</label>
+        <div>
+            <input type="number" id="batch" name="batch" required>
         </div>
 
         <div id="submission">
@@ -60,7 +36,7 @@
     <p>
         <a href="today">today</a><br>
         <a href="biweekly">biweekly</a><br>
-        <a href="deletion">made a mistake?</a>
+        <a href="/">home</a>
     </p>
     <script>
         setTimeout(function(){

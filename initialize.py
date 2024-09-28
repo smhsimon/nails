@@ -29,8 +29,8 @@ def period_initializer(name):
     df.to_csv(filepath, index=True, index_label='date')
 
 def individual_initializer(name):
-    cols = ['normal', 'sns', 'total'] 
-    df = pd.DataFrame([[0, 0, 0]], columns=cols)
+    cols = ['normal', 'sns', 'total', 'batch'] 
+    df = pd.DataFrame([[0, 0, 0, 0]], columns=cols)
 
     csv_name = name + '_today.csv'
     subdirectory = os.path.join(directory, name)
