@@ -1,6 +1,6 @@
-from flask import Flask, request, redirect, flash, render_template
 import os
 import pandas as pd
+from flask import Flask, request, redirect, flash, render_template
 
 
 import settings
@@ -71,8 +71,6 @@ def deletion():
         handle_input.deletion(name, batch)
         flash('Input recorded!')
     return render_template('deletion.html', employees=settings.employees)
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)

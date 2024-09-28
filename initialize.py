@@ -1,5 +1,5 @@
-import pandas as pd
 import os
+import pandas as pd
 import calendar
 
 import settings
@@ -42,10 +42,12 @@ def folder_initializer():
         if not os.path.isdir('employee data/' + employee):
             os.makedirs('employee data/' + employee)
 
-def biweekly_update():
+def initialize(biweekly):
     for employee in settings.employees:
         if not os.path.isdir(os.path.join('employee data', employee)):
             folder_initializer()
 
-        period_initializer(employee)
         individual_initializer(employee)
+
+        if biweekly:
+            period_initializer(employee)
