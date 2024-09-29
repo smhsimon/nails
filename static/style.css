@@ -2,7 +2,8 @@
     display: flex;
     justify-content: center;  
     flex-wrap: wrap;
-    gap: 25px;
+    gap: 35px;
+    width: 100%;
 }
 
 .today_container {
@@ -28,22 +29,27 @@ textarea {
     gap: 10px;
 }
 
-#submission {
+#submission, .archive {
     display: flex;
     align-items: center; 
     gap: 5px;
     height: 18px;
 }
 
+.archive {
+    margin-bottom: 8px;
+}
+
 #button {
     align-items: center;
 }
 
-#flash {
+#flash, #flash_daily, #flash_biweekly {
     /* height: 10px;  */
-    opacity:1;
-    transition:opacity 500ms;
+    opacity: 1;
+    transition: opacity 500ms;
 }
-#flash.fade {
-    opacity:0;
+
+#flash.fade, #flash_daily.fade, #flash_biweekly.fade {
+    opacity: 0;
 }

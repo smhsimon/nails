@@ -48,9 +48,9 @@
         </div>
 
         <div id="submission">
-            <input type="submit" value="Submit"> 
+            <input type="submit" name="action" value="Submit"> 
             <div id="flash">
-                {% for message in get_flashed_messages() %}
+                {% for message in get_flashed_messages(category_filter=["dog"]) %}
                     <p>{{ message }}</p>
                 {% endfor %}
             </div>
@@ -58,13 +58,55 @@
     </form> 
 
     <p>
-        <a href="today">today</a><br>
-        <a href="biweekly">biweekly</a><br>
-        <a href="deletion">made a mistake?</a>
+        <a href="today" target="_blank">today</a><br>
+        <a href="biweekly" target="_blank">biweekly</a><br>
+        <a href="deletion" target="_blank">made a mistake?</a>
     </p>
+
+    <form method="post">
+        <div class="archive">
+            <input type="submit" name="action" value="daily archive"> 
+            <div id="flash_daily">
+                {% for message in get_flashed_messages(category_filter=["cat"]) %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="archive">
+            <input type="submit" name="action" value="biweekly archive"> 
+            <div id="flash_biweekly">
+                {% for message in get_flashed_messages(category_filter=["rat"]) %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        </div>
+
+        
+        <div class="archive"> 
+            <input type="submit" name="action" value="cycle day">
+        </div>
+
+        <div class="archive"> 
+            <input type="submit" name="action" value="reset date">
+        </div>
+
+        <div class="archive"> 
+            <input type="submit" name="action" value="initializer">
+        </div>
+    </form>
+        
     <script>
         setTimeout(function(){
             document.getElementById('flash').className = 'fade';
+        }, 2500);
+
+        setTimeout(function(){
+            document.getElementById('flash_daily').className = 'fade';
+        }, 2500);
+
+        setTimeout(function(){
+            document.getElementById('flash_biweekly').className = 'fade';
         }, 2500);
     </script>
 </div>
