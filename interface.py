@@ -65,7 +65,6 @@ def handle_buttons():
                 daily_archive()
                 biweekly_archive()
                 settings.cycle_day()
-                print(settings.curr_full_date)
                 initialize.initialize(True)
                 archive.create_archive()
             else:                
